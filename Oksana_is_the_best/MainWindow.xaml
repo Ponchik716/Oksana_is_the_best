@@ -1,0 +1,74 @@
+﻿<Window x:Class="Oksana_is_the_best.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Oksana_is_the_best"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="6*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Background="DeepSkyBlue">
+            <TextBlock FontSize="40" Margin="10" Width="183" Height="Auto" FontFamily="Cascadia Code" Foreground="WhiteSmoke" VerticalAlignment="Center" HorizontalAlignment="Center">Игрушки</TextBlock>
+            <StackPanel Grid.Row="0" Orientation="Horizontal">
+                <TextBlock Margin="10" FontFamily="Cascadia Code" Foreground="WhiteSmoke">Сортировка</TextBlock>
+                <ComboBox Width="100" Height="20" x:Name="Sort" SelectionChanged="Sort_SelectionChanged">
+                    <ComboBoxItem>По умолчянию</ComboBoxItem>
+                    <ComboBoxItem>По возрастанию</ComboBoxItem>
+                    <ComboBoxItem>По убыванию</ComboBoxItem>
+                </ComboBox>
+
+                <TextBlock Margin="10" FontFamily="Cascadia Code" Foreground="WhiteSmoke">Поиск</TextBlock>
+                <TextBox Width="100" Height="20" x:Name="Search" TextChanged="Search_TextChanged"></TextBox>
+            </StackPanel>
+        </StackPanel>
+        
+        <StackPanel Grid.Row="2" Background="DeepSkyBlue" Orientation="Horizontal">
+            <Button x:Name="Redact" Margin="5" Height="20" Width="100" Background="AliceBlue" VerticalAlignment="Center" HorizontalAlignment="Left" Visibility="Hidden">Редактировать</Button>
+            <Button x:Name="Add" Margin="5" Height="20" Width="70" Background="AliceBlue"  HorizontalAlignment="Right" Visibility="Hidden">Добавить</Button>
+        </StackPanel>
+        <StackPanel Grid.Row="2" HorizontalAlignment="Right" Orientation="Horizontal">
+            <TextBlock Margin="5" Height="20" Width="100" Foreground="AliceBlue">Введите пароль</TextBlock>
+            <TextBox x:Name="PasswordTb" Margin="5" Height="20" Width="70" Background="AliceBlue" ></TextBox>
+            <Button Margin="10" Height="20" Width="100" Background="AliceBlue" Click="Button_Click">Админ</Button>
+        </StackPanel>
+
+        <ListView Grid.Row="1" x:Name="ServiceList" d:ItemsSource="{d:SampleData ItemCount=5}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100"></ColumnDefinition>
+                            <ColumnDefinition Width="600"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30"></RowDefinition>
+                            <RowDefinition Height="30"></RowDefinition>
+                            <RowDefinition Height="30"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <TextBlock Grid.Column="1" Text="{Binding Name}"></TextBlock>
+                        <TextBlock Grid.Column="1" Grid.Row="1" Width="700" Text="{Binding Description}"></TextBlock>
+                        <StackPanel Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left" Width="Auto">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Margin="10" Text="{Binding Cost}"></TextBlock>
+                                <TextBlock Margin="10" Text="{Binding Weight}"></TextBlock>
+                                <TextBlock Margin="10" Text="{Binding Height}"></TextBlock>
+                                <TextBlock Margin="10" Text="{Binding Width}"></TextBlock>
+                            </StackPanel>
+                            <StackPanel Grid.Column="2"></StackPanel>
+                        </StackPanel>
+                        
+
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            
+        </ListView>
+
+
+    </Grid>
+</Window>
